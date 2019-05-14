@@ -12,7 +12,9 @@ RUN yum install -y oracle-instantclient18.3-basic gzip git-core gcc gcc-c++ make
     libcurl libcurl-devel libaio libaio-devel libxml2 libxml2-devel R && ldconfig && \
     rm -rf /var/cache/yum
 
-RUN R -e "install.packages('ROracle')"
+RUN curl -o /ROracle_1.3-1.tar.gz https://cran.r-project.org/src/contrib/ROracle_1.3-1.tar.gz
+RUN R CMD INSTALL ROracle_1.3-1.tar.gz
+RUN rm -f /ROracle_1.3-1.tar.gz
 RUN R -e "install.packages('caret')"
 RUN R -e "install.packages('VIM')"
 RUN R -e "install.packages('pacman')"
