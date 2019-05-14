@@ -1,6 +1,7 @@
 FROM oraclelinux:7-slim
 EXPOSE 3838
 RUN yum install -y oracle-release-el7 oracle-epel-release-el7 && yum update -y
+RUN rpm --import http://mirror.centos.org/centos/7/os/x86_64/RPM-GPG-KEY-CentOS-7
 RUN yum localinstall http://mirror.centos.org/centos/7/os/x86_64/Packages/texlive-epsf-doc-svn21461.2.7.4-43.el7.noarch.rpm
 RUN yum localinstall http://mirror.centos.org/centos/7/os/x86_64/Packages/texlive-epsf-svn21461.2.7.4-43.el7.noarch.rpm
 RUN yum localinstall http://mirror.centos.org/centos/7/os/x86_64/Packages/texinfo-tex-5.1-5.el7.x86_64.rpm
