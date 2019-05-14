@@ -1,11 +1,14 @@
 FROM oraclelinux:7-slim
 EXPOSE 3838
-RUN  yum install -y oracle-release-el7 oracle-epel-release-el7 && yum update -y && \
-     yum install -y oracle-instantclient18.3-basic gzip git-core gcc gcc-c++ make \
-     oracle-instantclient18.3-devel oracle-instantclient18.3-sqlplus tar cmake \
-     oracle-instantclient18.3-odbc oracle-instantclient18.3-jdbc openssl openssl-devel \
-     libcurl libcurl-devel libaio libaio-devel libxml2 libxml2-devel R && ldconfig && \
-     rm -rf /var/cache/yum
+RUN yum install -y oracle-release-el7 oracle-epel-release-el7 && yum update -y
+RUN yum localinstall http://mirror.centos.org/centos/7/os/x86_64/Packages/texlive-epsf-doc-svn21461.2.7.4-38.el7.noarch.rpm
+RUN yum localinstall http://mirror.centos.org/centos/7/os/x86_64/Packages/texlive-epsf-svn21461.2.7.4-38.el7.noarch.rpm
+RUN yum localinstall http://mirror.centos.org/centos/7/os/x86_64/Packages/texinfo-tex-5.1-4.el7.x86_64.rpm
+RUN yum install -y oracle-instantclient18.3-basic gzip git-core gcc gcc-c++ make \
+    oracle-instantclient18.3-devel oracle-instantclient18.3-sqlplus tar cmake \
+    oracle-instantclient18.3-odbc oracle-instantclient18.3-jdbc openssl openssl-devel \
+    libcurl libcurl-devel libaio libaio-devel libxml2 libxml2-devel R && ldconfig && \
+    rm -rf /var/cache/yum
 
 RUN R -e "install.packages('ROracle')"
 RUN R -e "install.packages('caret')"
