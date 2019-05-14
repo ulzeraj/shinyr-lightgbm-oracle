@@ -1,6 +1,6 @@
 FROM oraclelinux:7-slim
 EXPOSE 3838
-RUN  yum install -y oracle-release-el7 epel-release && yum update -y && \
+RUN  yum install -y oracle-release-el7 oracle-epel-release-el7 && yum update -y && \
      yum install -y oracle-instantclient18.3-basic gzip git-core gcc gcc-c++ make \
      oracle-instantclient18.3-devel oracle-instantclient18.3-sqlplus tar cmake \
      oracle-instantclient18.3-odbc oracle-instantclient18.3-jdbc openssl openssl-devel \
